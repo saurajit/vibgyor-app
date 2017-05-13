@@ -1,0 +1,248 @@
+.spinner-0 {
+  -webkit-animation-name: spinner1;
+  -moz-animation-name: spinner1;
+  -o-animation-name: spinner1;
+  animation-name: spinner1;
+}
+
+.spinner-1 {
+  -webkit-animation-name: spinner2;
+  -moz-animation-name: spinner2;
+  -o-animation-name: spinner2;
+  animation-name: spinner2;
+}
+
+.spinner-2 {
+  -webkit-animation-name: spinner3;
+  -moz-animation-name: spinner3;
+  -o-animation-name: spinner3;
+  animation-name: spinner3;
+}
+.spinner-3 {
+  -webkit-animation-name: spinner4;
+  -moz-animation-name: spinner4;
+  -o-animation-name: spinner4;
+  animation-name: spinner4;
+}
+.spinner-4 {
+  -webkit-animation-name: spinner5;
+  -moz-animation-name: spinner5;
+  -o-animation-name: spinner5;
+  animation-name: spinner5;
+}
+.spinner-5 {
+  -webkit-animation-name: spinner6;
+  -moz-animation-name: spinner6;
+  -o-animation-name: spinner6;
+  animation-name: spinner6;
+}
+.spinner-6 {
+  -webkit-animation-name: spinner7;
+  -moz-animation-name: spinner7;
+  -o-animation-name: spinner7;
+  animation-name: spinner7;
+}
+
+
+@keyframes spinner1 {
+  0% {
+    -webkit-transform: translate(0px, 0px);
+    -moz-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    -o-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+    opacity: 1;
+  }
+  35% {
+   -webkit-transform: translate(0px, -315px);
+    -moz-transform: translate(0px, -315px);
+    -ms-transform: translate(0px, -315px);
+    -o-transform: translate(0px, -315px);
+    transform: translate(0px, -315px);
+    opacity: 0.5;
+  }
+  50% {
+   -webkit-transform: translate(0px, -254px);
+    -moz-transform: translate(0px, -254px);
+    -ms-transform: translate(0px, -254px);
+    -o-transform: translate(0px, -254px);
+    transform: translate(0px, -254px);
+    opacity: 0.3;
+  }
+  to {
+   -webkit-transform: translate(0px, -63px);
+    -moz-transform: translate(0px, -63px);
+    -ms-transform: translate(0px, -63px);
+    -o-transform: translate(0px, -63px);
+    transform: translate(0px, -63px);
+    opacity: 1;
+  }
+}
+
+@keyframes spinner2 {
+  from {
+    -webkit-transform: translate(0px, 0px);
+    -moz-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    -o-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+    opacity: 1;
+  }
+  50%, 35% {
+   -webkit-transform: translate(0px, -254px);
+    -moz-transform: translate(0px, -254px);
+    -ms-transform: translate(0px, -254px);
+    -o-transform: translate(0px, -254px);
+    transform: translate(0px, -254px);
+    opacity: 0.3;
+  }
+  25%, to {
+   -webkit-transform: translate(0px, -131px);
+    -moz-transform: translate(0px, -131px);
+    -ms-transform: translate(0px, -131px);
+    -o-transform: translate(0px, -131px);
+    transform: translate(0px, -131px);
+    opacity: 1;
+  }
+}
+
+@keyframes spinner3 {
+  from {
+    -webkit-transform: translate(0px, 0px);
+    -moz-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    -o-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+  }
+  to {
+    -webkit-transform: translate(0px, -198px);
+    -moz-transform: translate(0px, -198px);
+    -ms-transform: translate(0px, -198px);
+    -o-transform: translate(0px, -198px);
+    transform: translate(0px, -198px);
+  }
+}
+
+@keyframes spinner4 {
+  from {
+    -webkit-transform: translate(0px, 0px);
+    -moz-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    -o-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+  }
+  to {
+    -webkit-transform: translate(0px, -265px);
+    -moz-transform: translate(0px, -265px);
+    -ms-transform: translate(0px, -265px);
+    -o-transform: translate(0px, -265px);
+    transform: translate(0px, -265px);
+  }
+}
+
+@keyframes spinner5 {
+  from {
+    -webkit-transform: translate(0px, 0px);
+    -moz-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    -o-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+  }
+  to {
+    -webkit-transform: translate(0px, -330px);
+    -moz-transform: translate(0px, -330px);
+    -ms-transform: translate(0px, -330px);
+    -o-transform: translate(0px, -330px);
+    transform: translate(0px, -330px);
+  }
+}
+
+@keyframes spinner6 {
+  from {
+    -webkit-transform: translate(0px, 0px);
+    -moz-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    -o-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+  }
+  to {
+    -webkit-transform: translate(0px, -394px);
+    -moz-transform: translate(0px, -394px);
+    -ms-transform: translate(0px, -394px);
+    -o-transform: translate(0px, -394px);
+    transform: translate(0px, -394px);
+  }
+}
+
+@keyframes spinner7 {
+  from {
+    -webkit-transform: translate(0px, 0px);
+    -moz-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    -o-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+  }
+  to {
+    -webkit-transform: translate(0px, -461px);
+    -moz-transform: translate(0px, -461px);
+    -ms-transform: translate(0px, -461px);
+    -o-transform: translate(0px, -461px);
+    transform: translate(0px, -461px);
+  }
+}
+
+.glow {
+  -webkit-animation-name: glow;
+  -moz-animation-name: glow;
+  -o-animation-name: glow;
+  animation-name: glow;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-duration: 3s;
+  -moz-animation-duration: 3s;
+  -o-animation-duration: 3s;
+  animation-duration: 3s;
+}
+
+@keyframes glow {
+  from, to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes main-content-animation {
+  from {
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translate(50%, 50%);
+  }
+  to {
+    height: 100%;
+    width: 100%;
+    overflow: initial;
+    opacity: 1;
+    transform: translate(0%, 0%);
+  }
+}
+
+.main-content-animation {
+  -webkit-animation-name: main-content-animation;
+  -moz-animation-name: main-content-animation;
+  -o-animation-name: main-content-animation;
+  animation-name: main-content-animation;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -o-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-animation-duration: 2s;
+  -moz-animation-duration: 2s;
+  -o-animation-duration: 2s;
+  animation-duration: 2s;
+}

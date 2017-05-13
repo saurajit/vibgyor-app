@@ -1,0 +1,24 @@
+{
+  "name": "vibgyor",
+  "authors": [
+    "Saurajit"
+  ],
+  "description": "Application for selecting the VIBGYOR members",
+  "main": "index.html",
+  "keywords": [
+    "roulette"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4"
+  }
+}

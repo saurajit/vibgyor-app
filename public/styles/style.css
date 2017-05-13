@@ -1,0 +1,43 @@
+.violet {
+  background-color: #8A2BE2;
+}
+.indigo {
+  background-color: #4b0082;
+}
+.blue {
+  background-color: #0000FF;
+}
+.green {
+  background-color: #00FF00;
+}
+.yellow {
+  background-color: #FFFF00;
+}
+.orange {
+  background-color: #FFA500;
+}
+.red {
+  background-color: #FF0000;
+}
+
+/* Button styles copied from Foundation CSS */
+[type=reset], [type=submit], button, html [type=button] {
+    -webkit-appearance: button;
+}
+
+button {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 1rem;
+    padding: .85em 1em;
+    -webkit-appearance: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: background-color .25s ease-out,color .25s ease-out;
+    font-size: .9rem;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+    background-color: #2ba6cb;
+    color: #fefefe;
+}
