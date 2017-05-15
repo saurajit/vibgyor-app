@@ -1,10 +1,10 @@
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('./server/vibgyor.sqlite');
 
-function getMembers(sql, params) {
+function getMembers(params) {
   return new Promise(function (resolve, reject) {
     var responseObj;
-    db.all(sql, params, function cb(err, rows) {
+    db.all("SELECT id, name, colour FROM members WHERE is_colour_set = 0 ORDER BY RANDOM() LIMIT ?", params, function cb(err, rows) {
       if (err) {
         responseObj = {
           'error': err
@@ -29,7 +29,6 @@ function setMemberColours (members) {
         stmt.run(members[i].colour, members[i].id);
     }
     stmt.finalize(function cb(err, rows) {
-      console.log(err, rows);
       if (err) {
         responseObj = {
           'error': err
@@ -48,7 +47,7 @@ function setMemberColours (members) {
 
 var Handlers = {
   retrieveMembers: function (memberCount) {
-    return getMembers("SELECT id, name, colour FROM members WHERE is_colour_set = 0 ORDER BY RANDOM() LIMIT ?", [memberCount]);
+    return getMembers([memberCount]);
   },
   updateMembers: function (members) {
     return setMemberColours(members);

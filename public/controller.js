@@ -40,10 +40,9 @@ angular.module('vibgyorApp', [])
 
     function saveMemberData (list) {
       list.shift();
-      console.log(list);
       $http.put('api/members', list)
       .then(function (response) {
-        console.log(error);
+        console.log(response);
       });
     }
 
