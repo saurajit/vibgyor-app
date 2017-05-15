@@ -1,3 +1,4 @@
 node_modules/
 public/bower_components
 public/member_images/*.jpeg
+server/sqlite3.exe

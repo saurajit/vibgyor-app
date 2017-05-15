@@ -1,5 +1,5 @@
 angular.module('vibgyorApp', [])
-  .controller('mainController', function ($timeout) {
+  .controller('mainController', function ($timeout, $http) {
     var mc = this,
       defaultMember = {
         id: 0,
@@ -16,67 +16,36 @@ angular.module('vibgyorApp', [])
     mc.round = 0;
     mc.class = [];
 
-    var memberList = [
-      {
-        id: 1,
-        name: 'Saurajit Bhuyan'
-      },
-      {
-        id: 2,
-        name: 'Carlos Guerra'
-      },
-      {
-        id: 3,
-        name: 'Pranjal Goswami'
-      },
-      {
-        id: 4,
-        name: 'Ujjal Sharma'
-      },
-      {
-        id: 4,
-        name: 'Ranjan Choudhary'
-      },
-      {
-        id: 1,
-        name: 'Intazuddin Ahmed'
-      },
-      {
-        id: 1,
-        name: 'Sachin Mishra'
-      }
-    ];
-
     function getMembers () {
-      var list = [];
-      angular.copy(memberList, list);
-      list.unshift(defaultMember);
-      return list;
+      return $http.get('api/members/7')
+      .then(function (response) {
+        response.data.result.unshift(defaultMember);
+        mc.memberList = response.data.result;
+      });
     }
 
     function resetClasses () {
       mc.class = [];
-      mc.memberList.splice(1, mc.memberList - 1);
     }
 
     function setColorInfo (list) {
       var counter;
       for (counter = 0; counter < list.length; counter++) {
         mc.class[counter] = 'spinner-' + list[counter];
-        mc.memberList[counter + 1].color =  colorList[list.indexOf(counter)];
+        mc.memberList[counter + 1].colour =  colorList[list.indexOf(counter)];
       }
     }
 
-    function saveMemberData () {
-      var list = mc.memberList;
+    function saveMemberData (list) {
       list.shift();
       console.log(list);
     }
 
     mc.spinner = function () {
       if (mc.round > 0) {
+        saveMemberData(mc.memberList);
         resetClasses();
-        saveMemberData();
+        mc.memberList = [defaultMember];
       }
       mc.round++;
 
@@ -85,10 +54,12 @@ angular.module('vibgyorApp', [])
       $timeout(function () {
       }, 3000)
       .then(function () {
-        mc.spinnerClass = '';
-        mc.memberList = getMembers();
-        randomIndexList = randomArray(indexList.slice(0, mc.memberList.length -1));
-        setColorInfo(randomIndexList);
+        getMembers()
+        .then(function () {
+          mc.spinnerClass = '';
+          randomIndexList = randomArray(indexList.slice(0, mc.memberList.length -1));
+          setColorInfo(randomIndexList);
+        });
       });
     };
 
