@@ -21,14 +21,37 @@ function getMembers(sql, params) {
   });
 }
 
+function setMemberColours (members) {
+  return new Promise(function (resolve, reject) {
+    var responseObj;
+    var stmt = db.prepare("UPDATE members set colour =? , is_colour_set = 1 WHERE id = ?");
+    for (var i = 0; i < members.length; i++) {
+        stmt.run(members[i].colour, members[i].id);
+    }
+    stmt.finalize(function cb(err, rows) {
+      console.log(err, rows);
+      if (err) {
+        responseObj = {
+          'error': err
+        }
+        reject(responseObj);
+      } else {
+        responseObj = {
+          statement: this,
+          rows: rows
+        }
+        resolve(responseObj);
+      }
+    });
+  });
+}
+
 var Handlers = {
   retrieveMembers: function (memberCount) {
-    return getMembers("SELECT id, name, colour FROM members ORDER BY RANDOM() LIMIT ?", [memberCount]);
+    return getMembers("SELECT id, name, colour FROM members WHERE is_colour_set = 0 ORDER BY RANDOM() LIMIT ?", [memberCount]);
   },
-  updateMembers: function (memberCount) {
-    return {
-      'message': 'Requested updating of` members'
-    };
+  updateMembers: function (members) {
+    return setMemberColours(members);
   }
 };
 
@@ -38,7 +61,7 @@ process.stdin.resume();//so the program will not close instantly
 
 function exitHandler(options, err) {
   db.close();
-  if (options.cleanup) console.log('Handler clean');
+  if (options.cleanup) console.log('DB closed');
   if (err) console.log(err.stack);
   if (options.exit) process.exit();
 }

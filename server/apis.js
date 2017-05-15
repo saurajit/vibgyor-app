@@ -6,7 +6,6 @@ var routes = function (routes) {
   });
 
   routes.route('/members/:count')
-
     .get(function (req, res) {
       responseHandler.retrieveMembers(req.params.count)
         .then(function (response) {
@@ -15,18 +14,17 @@ var routes = function (routes) {
         .catch(function (error) {
           res.status(400).json({ result: error, uri: req.route.path });
         });
-    })
+    });
 
+  routes.route('/members')
     .put(function (req, res) {
-      responseHandler.updateMembers(req.body);
-      res.json({ result: response, uri: req.route.path });
-      // responseHandler.updateMembers(req.params.itemId, req.body)
-      //   .then(function (response) {
-      //     res.json({ result: response, uri: req.route.path });
-      //   })
-      //   .catch(function (error) {
-      //     res.status(400).json({ result: error, uri: req.route.path });
-      //   });
+      responseHandler.updateMembers(req.body)
+        .then(function (response) {
+          res.json({ result: response, uri: req.route.path });
+        })
+        .catch(function (error) {
+          res.status(400).json({ result: error, uri: req.route.path });
+        });
     });
 };
 

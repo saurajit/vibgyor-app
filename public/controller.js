@@ -21,6 +21,8 @@ angular.module('vibgyorApp', [])
       .then(function (response) {
         response.data.result.unshift(defaultMember);
         mc.memberList = response.data.result;
+      }, function (error) {
+        console.log(error);
       });
     }
 
@@ -39,6 +41,10 @@ angular.module('vibgyorApp', [])
     function saveMemberData (list) {
       list.shift();
       console.log(list);
+      $http.put('api/members', list)
+      .then(function (response) {
+        console.log(error);
+      });
     }
 
     mc.spinner = function () {
