@@ -3,11 +3,10 @@
 }
 
 .group-color-wrapper {
-  height: 14%;
+  height: 100%;
   padding: 5px;
 }
 .group-color {
-  border-radius: 5px;
   height: 100%;
   width: 100%;
 }
@@ -15,7 +14,7 @@
 .member-wrapper {
   height: 63px;
   overflow: hidden;
-  margin: 15px 0;
+  margin: 10px 0;
 }
 .member-inner {
   -webkit-animation-duration: 3s;
@@ -36,4 +35,8 @@
 
 .member-inner img {
   border-radius: 40px;
+}
+
+.row-wrapper {
+  margin-bottom: 10px;
 }

@@ -1,157 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>VIBGYOR - Zaloni</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css">
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/layout.css">
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/animation.css">
-    
-    <!-- bower:js -->
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="controller.js"></script>
-    <!-- endbower -->
-  </head>
-  <body ng-app="vibgyorApp" class="ng-cloak">
-    <div id="main-wrapper" class="fluid-wrapper main-content-animation" ng-controller="mainController as mc">
-      <header class="row height-1 no-margin">
-        <div class="col-xs-6">
-          Header
+
+<head>
+  <title>VIBGYOR - Zaloni</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css">
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/animation.css">
+
+  <!-- bower:js -->
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="controller.js"></script>
+  <!-- endbower -->
+</head>
+
+<body ng-app="vibgyorApp" class="ng-cloak">
+  <div id="main-wrapper" class="fluid-wrapper main-content-animation" ng-controller="mainController as mc">
+    <header class="row height-1 no-margin">
+      <div class="col-xs-5">
+        Header
+      </div>
+      <div class="row action-buttons col-xs-6">
+        <div class="row col-xs-10 middle-xs between-xs">
+          <h1>Round: {{mc.round}}</h1>
+          <button type="button" class="button no-margin" ng-class="mc.spinnerClass" ng-click="mc.spinner()">Spin</button>
+          <button type="button" class="button no-margin" onclick="javascript:alert('Save')">Save</button>
         </div>
-        <div class="row action-buttons col-xs-6">
-          <div class="row col-xs-10 middle-xs between-xs">
-            <h1>Round: {{mc.round}}</h1>
-            <button type="button" class="button no-margin" ng-class="mc.spinnerClass" ng-click="mc.spinner()">Spin</button>
-            <button type="button" class="button no-margin" onclick="javascript:alert('Save')">Save</button>
+      </div>
+    </header>
+
+    <!--Main section-->
+    <section class="column center-xs height-9 no-margin">
+      <div class="row col-xs-8 col-xs-offset-2 row-wrapper">
+        <div class="col-xs-6">
+          <div class="member-wrapper middle-xs">
+            <div class="member-inner" ng-class="mc.class[0]">
+              <div class="row center-xs middle-xs" ng-repeat="member in mc.memberList">
+                <div class="col-xs-4">
+                  <img ng-src="member_images/{{member.id}}.jpg" height="63" width="63" alt="{{member.name}}">
+                </div>
+                <div class="col-xs-4">
+                  {{member.name}}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </header>
-
-      <!--Main section-->
-      <section class="row center-xs height-9 no-margin">
-        <div class="row col-xs-11 center-xs">
-            <div class="col-xs-6">
-              <div class="member-wrapper middle-xs">
-                <div class="member-inner" ng-class="mc.class[0]">
-                  <div class="row center-xs middle-xs" ng-repeat="member in mc.memberList">
-                    <div class="col-xs-4">
-                      {{member.name}}
-                    </div>
-                    <div class="col-xs-4">
-                      <img ng-src="member_images/{{member.id}}.jpg" height="63" width="63" alt="{{member.name}}">
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="member-wrapper middle-xs">
-                <div class="member-inner" ng-class="mc.class[1]">
-                  <div class="row center-xs middle-xs" ng-repeat="member in mc.memberList">
-                    <div class="col-xs-4">
-                      {{member.name}}
-                    </div>
-                    <div class="col-xs-4">
-                      <img ng-src="member_images/{{member.id}}.jpg" height="63" width="63" alt="{{member.name}}">
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="member-wrapper middle-xs">
-                <div class="member-inner" ng-class="mc.class[2]">
-                  <div class="row center-xs middle-xs" ng-repeat="member in mc.memberList">
-                    <div class="col-xs-4">
-                      {{member.name}}
-                    </div>
-                    <div class="col-xs-4">
-                      <img ng-src="member_images/{{member.id}}.jpg" height="63" width="63" alt="{{member.name}}">
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="member-wrapper middle-xs">
-                <div class="member-inner" ng-class="mc.class[3]">
-                  <div class="row center-xs middle-xs" ng-repeat="member in mc.memberList">
-                    <div class="col-xs-4">
-                      {{member.name}}
-                    </div>
-                    <div class="col-xs-4">
-                      <img ng-src="member_images/{{member.id}}.jpg" height="63" width="63" alt="{{member.name}}">
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="member-wrapper middle-xs">
-                <div class="member-inner" ng-class="mc.class[4]">
-                  <div class="row center-xs middle-xs" ng-repeat="member in mc.memberList">
-                    <div class="col-xs-4">
-                      {{member.name}}
-                    </div>
-                    <div class="col-xs-4">
-                      <img ng-src="member_images/{{member.id}}.jpg" height="63" width="63" alt="{{member.name}}">
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="member-wrapper middle-xs">
-                <div class="member-inner" ng-class="mc.class[5]">
-                  <div class="row center-xs middle-xs" ng-repeat="member in mc.memberList">
-                    <div class="col-xs-4">
-                      {{member.name}}
-                    </div>
-                    <div class="col-xs-4">
-                      <img ng-src="member_images/{{member.id}}.jpg" height="63" width="63" alt="{{member.name}}">
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="member-wrapper middle-xs">
-                <div class="member-inner" ng-class="mc.class[6]">
-                  <div class="row center-xs middle-xs" ng-repeat="member in mc.memberList">
-                    <div class="col-xs-4">
-                      {{member.name}}
-                    </div>
-                    <div class="col-xs-4">
-                      <img ng-src="member_images/{{member.id}}.jpg" height="63" width="63" alt="{{member.name}}">
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <div class="col-xs-2">
+          <div class="row group-color-wrapper middle-xs">
+            <div class="row group-color violet center-xs middle-xs">
+              <div>Violet</div>
             </div>
-            <div class="col-xs-6">
-              <div class="row group-color-wrapper center-xs middle-xs">
-                <div class="row group-color violet center-xs middle-xs">
-                  <div>V</div>
-                </div>
-              </div>
-              <div class="row group-color-wrapper center-xs middle-xs">
-                <div class="row group-color indigo center-xs middle-xs">
-                  <div>I</div>
-                </div>
-              </div>
-              <div class="row group-color-wrapper center-xs middle-xs"><div class="group-color blue">B</div></div>
-              <div class="row group-color-wrapper center-xs middle-xs"><div class="group-color green">G</div></div>
-              <div class="row group-color-wrapper center-xs middle-xs">
-                <div class="row group-color yellow center-xs middle-xs">
-                  <div>Y</div>
-                </div>
-              </div>
-              <div class="row group-color-wrapper center-xs middle-xs">
-                <div class="row group-color orange center-xs middle-xs">
-                  <div>O</div>
-                </div>
-              </div>
-              <div class="row group-color-wrapper center-xs middle-xs"><div class="group-color red">R</div></div>
-            </div>
+          </div>
         </div>
-      </section>
-    </div>
-  </body>
+      </div>
+      <div class="row col-xs-8 col-xs-offset-2 row-wrapper">
+        <div class="col-xs-6">
+          <div class="member-wrapper middle-xs">
+            <div class="member-inner" ng-class="mc.class[1]">
+              <div class="row center-xs middle-xs" ng-repeat="member in mc.memberList">
+                <div class="col-xs-4">
+                  <img ng-src="member_images/{{member.id}}.jpg" height="63" width="63" alt="{{member.name}}">
+                </div>
+                <div class="col-xs-4">
+                  {{member.name}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-2">
+          <div class="row group-color-wrapper center-xs middle-xs">
+            <div class="row group-color indigo center-xs middle-xs">
+              <div>Indigo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row col-xs-8 col-xs-offset-2 row-wrapper">
+        <div class="col-xs-6">
+          <div class="member-wrapper middle-xs">
+            <div class="member-inner" ng-class="mc.class[2]">
+              <div class="row center-xs middle-xs" ng-repeat="member in mc.memberList">
+                <div class="col-xs-4">
+                  <img ng-src="member_images/{{member.id}}.jpg" height="63" width="63" alt="{{member.name}}">
+                </div>
+                <div class="col-xs-4">
+                  {{member.name}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-2">
+          <div class="row group-color-wrapper center-xs middle-xs">
+            <div class="row group-color blue center-xs middle-xs">
+              <div>Blue</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row col-xs-8 col-xs-offset-2 row-wrapper">
+        <div class="col-xs-6">
+          <div class="member-wrapper middle-xs">
+            <div class="member-inner" ng-class="mc.class[3]">
+              <div class="row center-xs middle-xs" ng-repeat="member in mc.memberList">
+                <div class="col-xs-4">
+                  <img ng-src="member_images/{{member.id}}.jpg" height="63" width="63" alt="{{member.name}}">
+                </div>
+                <div class="col-xs-4">
+                  {{member.name}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-2">
+          <div class="row group-color-wrapper center-xs middle-xs">
+            <div class="row group-color green center-xs middle-xs">
+              <div>Green</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row col-xs-8 col-xs-offset-2 row-wrapper">
+        <div class="col-xs-6">
+          <div class="member-wrapper middle-xs">
+            <div class="member-inner" ng-class="mc.class[4]">
+              <div class="row center-xs middle-xs" ng-repeat="member in mc.memberList">
+                <div class="col-xs-4">
+                  <img ng-src="member_images/{{member.id}}.jpg" height="63" width="63" alt="{{member.name}}">
+                </div>
+                <div class="col-xs-4">
+                  {{member.name}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-2">
+          <div class="row group-color-wrapper center-xs middle-xs">
+            <div class="row group-color yellow center-xs middle-xs">
+              <div>Yellow</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row col-xs-8 col-xs-offset-2 row-wrapper">
+        <div class="col-xs-6">
+          <div class="member-wrapper middle-xs">
+            <div class="member-inner" ng-class="mc.class[5]">
+              <div class="row center-xs middle-xs" ng-repeat="member in mc.memberList">
+                <div class="col-xs-4">
+                  <img ng-src="member_images/{{member.id}}.jpg" height="63" width="63" alt="{{member.name}}">
+                </div>
+                <div class="col-xs-4">
+                  {{member.name}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-2">
+          <div class="row group-color-wrapper center-xs middle-xs">
+            <div class="row group-color orange center-xs middle-xs">
+              <div>Orange</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row col-xs-8 col-xs-offset-2 row-wrapper">
+        <div class="col-xs-6">
+          <div class="member-wrapper middle-xs">
+            <div class="member-inner" ng-class="mc.class[6]">
+              <div class="row center-xs middle-xs" ng-repeat="member in mc.memberList">
+                <div class="col-xs-4">
+                  <img ng-src="member_images/{{member.id}}.jpg" height="63" width="63" alt="{{member.name}}">
+                </div>
+                <div class="col-xs-4">
+                  {{member.name}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-2">
+          <div class="row group-color-wrapper center-xs middle-xs">
+            <div class="row group-color red center-xs middle-xs">
+              <div>Red</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+
 </html>
