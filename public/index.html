@@ -21,13 +21,13 @@
   <div id="main-wrapper" class="fluid-wrapper main-content-animation" ng-controller="mainController as mc">
     <header class="row height-1 no-margin">
       <div class="col-xs-5">
-        Header
+        <img src="member_images/zaloni_logo.png" height="55" alt="Zaloni Logo">
       </div>
       <div class="row action-buttons col-xs-6">
         <div class="row col-xs-10 middle-xs between-xs">
           <h1>Round: {{mc.round}}</h1>
           <button type="button" class="button no-margin" ng-class="mc.spinnerClass" ng-click="mc.spinner()">Spin</button>
-          <button type="button" class="button no-margin" onclick="javascript:alert('Save')">Save</button>
+          <!--<button type="button" class="button no-margin" onclick="javascript:alert('Save')">Save</button>-->
         </div>
       </div>
     </header>
