@@ -26,6 +26,26 @@ var routes = function (routes) {
           res.status(400).json({ result: error, uri: req.route.path });
         });
     });
+
+    routes.route('/download')
+    .get(function (req, res) {
+      responseHandler.downloadResult()
+        .then(function (response) {
+          if (req.query.output === 'csv') {
+            var csv = require('express-csv');
+            if(req.query.header === 'true') {
+              response.rows.unshift({id: 'id', name: 'name', color: 'color'});
+            }
+            res.setHeader('Content-disposition', 'attachment; filename=members.csv');
+            res.csv(response.rows);
+          } else {
+            res.json({result: response.rows, uri: req.originalUrl});
+          }
+        })
+        .catch(function (error) {
+          res.status(400).json({ result: error, uri: req.route.path });
+        });
+    });
 };
 
 module.exports = routes;

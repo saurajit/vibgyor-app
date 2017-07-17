@@ -8,13 +8,13 @@ function getMembers(params) {
       if (err) {
         responseObj = {
           'error': err
-        }
+        };
         reject(responseObj);
       } else {
         responseObj = {
           statement: this,
           rows: rows
-        }
+        };
         resolve(responseObj);
       }
     });
@@ -32,13 +32,33 @@ function setMemberColours (members) {
       if (err) {
         responseObj = {
           'error': err
-        }
+        };
         reject(responseObj);
       } else {
         responseObj = {
           statement: this,
           rows: rows
-        }
+        };
+        resolve(responseObj);
+      }
+    });
+  });
+}
+
+function getResult () {
+  return new Promise(function (resolve, reject) {
+    var responseObj;
+    db.all("SELECT id, name, colour FROM members WHERE is_colour_set = ? ORDER BY id", [1], function cb(err, rows) {
+      if (err) {
+        responseObj = {
+          'error': err
+        };
+        reject(responseObj);
+      } else {
+        responseObj = {
+          statement: this,
+          rows: rows
+        };
         resolve(responseObj);
       }
     });
@@ -51,6 +71,9 @@ var Handlers = {
   },
   updateMembers: function (members) {
     return setMemberColours(members);
+  },
+  downloadResult: function () {
+    return getResult();
   }
 };
 
