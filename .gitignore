@@ -3,7 +3,10 @@ public/bower_components
 public/member_images/*.jpeg
 public/member_images/*.jpg
 server/sqlite3.exe
+.vscode/*
 *.zip
 *.exe
 *.sqlite
 *.csv
+*.xls
+*.xlsx
