@@ -25,9 +25,13 @@
       </div>
       <div class="row action-buttons col-xs-6">
         <div class="row col-xs-10 middle-xs between-xs">
-          <h1>Round: {{mc.round}}</h1>
-          <button type="button" class="button no-margin" ng-class="mc.spinnerClass" ng-click="mc.spinner()">Spin</button>
-          <!--<button type="button" class="button no-margin" onclick="javascript:alert('Save')">Save</button>-->
+          <h1>Round Remaining: {{mc.remainingRounds}}</h1>
+          <button type="button" class="button no-margin" ng-class="mc.spinnerClass" ng-click="mc.spinner()" ng-disabled="mc.remainingRounds == 0">
+            {{mc.remainingRounds != 1 ? 'Spin' : 'Save'}}
+          </button>
+          <a href="/api/download?output=csv">
+            <button type="button" class="button no-margin">Download</button>
+          </a>
         </div>
       </div>
     </header>

@@ -13,14 +13,19 @@ angular.module('vibgyorApp', [])
       id: 0,
       name: 'Who is it?'
     }];
-    mc.round = 0;
     mc.class = [];
+    mc.memberSize = 7;
+
+    function getRemainingRounds (remainingMembers) {
+      return Math.ceil(remainingMembers / mc.memberSize);
+    }
 
     function getMembers () {
-      return $http.get('api/members/7')
+      return $http.get('api/members/' + mc.memberSize)
       .then(function (response) {
-        response.data.result.unshift(defaultMember);
-        mc.memberList = response.data.result;
+        response.data.result.members.unshift(defaultMember);
+        mc.memberList = response.data.result.members;
+        mc.remainingRounds = getRemainingRounds(response.data.result.remaining);
       }, function (error) {
         console.log(error);
       });
@@ -47,12 +52,11 @@ angular.module('vibgyorApp', [])
     }
 
     mc.spinner = function () {
-      if (mc.round > 0) {
+      if (mc.remainingRounds > 0) {
         saveMemberData(mc.memberList);
         resetClasses();
         mc.memberList = [defaultMember];
       }
-      mc.round++;
 
       mc.spinnerClass = 'glow';
 
