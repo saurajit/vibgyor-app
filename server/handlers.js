@@ -2,7 +2,11 @@ var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('./server/vibgyor.sqlite');
 
 function getMembers(params) {
-  return new Promise(function (resolve, reject) {
+  var membersPromise,
+    countTotalPromise,
+    countRemainingPromise;
+  
+  membersPromise = new Promise(function (resolve, reject) {
     var responseObj;
     db.all("SELECT id, name, colour FROM members WHERE is_colour_set = 0 ORDER BY RANDOM() LIMIT ?", params, function cb(err, rows) {
       if (err) {
@@ -19,14 +23,52 @@ function getMembers(params) {
       }
     });
   });
+
+  countTotalPromise = new Promise(function (resolve, reject) {
+    var responseObj;
+    db.all('SELECT count(*) as total FROM members', [], function (err, rows) {
+      if (err) {
+        responseObj = {
+          'error': err
+        };
+        reject(responseObj);
+      } else {
+        responseObj = {
+          statement: this,
+          rows: rows
+        };
+        resolve(responseObj);
+      }
+    });
+  });
+
+  countRemainingPromise = new Promise(function (resolve, reject) {
+    var responseObj;
+    db.all('SELECT count(*) as notSet FROM members WHERE is_colour_set = ?', [0], function (err, rows) {
+      if (err) {
+        responseObj = {
+          'error': err
+        };
+        reject(responseObj);
+      } else {
+        responseObj = {
+          statement: this,
+          rows: rows
+        };
+        resolve(responseObj);
+      }
+    });
+  });
+
+  return Promise.all([membersPromise, countRemainingPromise, countTotalPromise]);
 }
 
-function setMemberColours (members) {
+function setMemberColours(members) {
   return new Promise(function (resolve, reject) {
     var responseObj;
     var stmt = db.prepare("UPDATE members set colour =? , is_colour_set = 1 WHERE id = ?");
     for (var i = 0; i < members.length; i++) {
-        stmt.run(members[i].colour, members[i].id);
+      stmt.run(members[i].colour, members[i].id);
     }
     stmt.finalize(function cb(err, rows) {
       if (err) {
@@ -45,7 +87,7 @@ function setMemberColours (members) {
   });
 }
 
-function getResult () {
+function getResult() {
   return new Promise(function (resolve, reject) {
     var responseObj;
     db.all("SELECT id, name, colour FROM members WHERE is_colour_set = ? ORDER BY id", [1], function cb(err, rows) {

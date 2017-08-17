@@ -7,9 +7,15 @@ var routes = function (routes) {
 
   routes.route('/members/:count')
     .get(function (req, res) {
+      var responseObj;
       responseHandler.retrieveMembers(req.params.count)
         .then(function (response) {
-          res.json({ result: response.rows, uri: req.route.path });
+          responseObj = {
+            members: response[0].rows,
+            remaining: response[1].rows[0].notSet,
+            total: response[2].rows[0].total
+          }
+          res.json({ result: responseObj, uri: req.route.path });
         })
         .catch(function (error) {
           res.status(400).json({ result: error, uri: req.route.path });
